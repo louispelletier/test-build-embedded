@@ -6,6 +6,7 @@ jobs:
     build:
       runs-on: ubuntu-latest
       env:
+        COMPOSE_FILE: unit-test/docker-compose.yml
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       steps:
@@ -13,8 +14,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Go into test folder
-        run: cd unit-test
       - name: Login to DockerHub
         run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - name: Build docker images
