@@ -6,7 +6,6 @@ jobs:
     build:
       runs-on: ubuntu-latest
       env:
-        COMPOSE_FILE: cpputest-unit-tests/docker-compose.yml
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       steps:
