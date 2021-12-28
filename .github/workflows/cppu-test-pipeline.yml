@@ -1,0 +1,24 @@
+name: Run cppu-test
+
+on:
+  push:
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      env:
+        COMPOSE_FILE: cpputest-unit-tests/docker-compose.yml
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+      steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Login to DockerHub
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - name: Build docker images
+        run: docker-compose build
+      - name: go inside docker
+        run: docker-compose run --rm --entrypoint /bin/bash cpputest
+      - name: run test
+        run: make
