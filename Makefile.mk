@@ -9,7 +9,7 @@
 # By default, recipe steps will be quieted.
 # But a user can supply VERBOSE=1 as an environment variable or command line argument
 # to re-enable build output.
-VERBOSE ?= 0
+VERBOSE ?= 1
 ifeq ($(VERBOSE),1)
 Q :=
 export VERBOSE = 1
@@ -75,10 +75,10 @@ all: $(BUILDRESULTS)/your_program
 
 # The list of source files needed for an executable target
 # TODO: replace with YOUR files
-APP_SOURCES := src/a_file.c
+APP_SOURCES := src/main.c
 # The list of source files needed for a library target
 # TODO: replace with YOUR files
-LIB_SOURCES := src/lib/a_file.c
+LIB_SOURCES := 
 
 # The output location where libraries should be placed
 # TODO: Adjust to be correct for your project
