@@ -1,0 +1,3 @@
+[submodule "cpputest-starter-project"]
+	path = cpputest-starter-project
+	url = https://github.com/jwgrenning/cpputest-starter-project.git
