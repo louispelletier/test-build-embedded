@@ -18,7 +18,5 @@ jobs:
         run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - name: Build docker images
         run: docker-compose build
-      - name: go inside docker
-        run: docker-compose run --rm --entrypoint /bin/bash cpputest
-      - name: run test
-        run: make
+      - name: run cppu test
+        run: docker-compose run cpputest make all
